@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>US Map - Housing Resolution Collaborative</title>
+<style>
+  path {
+    fill: #ccc;
+    stroke: white;
+    cursor: pointer;
+  }
+
+  path:hover {
+    fill: #999;
+  }
+
+  .active {
+    fill: #2ecc71 !important;
+  }
+
+  #info {
+    margin-top: 20px;
+    font-family: Arial;
+    font-size: 16px;
+  }
+</style>
+</head>
+
+<body>
+
+<h2>Current Service Areas</h2>
+
+<svg viewBox="0 0 959 593" width="100%">
+
+  <!-- Kansas -->
+  <path id="KS" class="active" d="M400,300 L460,300 L460,350 L400,350 Z"></path>
+
+  <!-- Missouri -->
+  <path id="MO" class="active" d="M460,300 L520,300 L520,350 L460,350 Z"></path>
+
+  <!-- Example other state -->
+  <path id="CA" d="M100,350 L150,350 L150,450 L100,450 Z"></path>
+
+</svg>
+
+<div id="info">Click a state to learn more.</div>
+
+<script>
+const info = document.getElementById("info");
+
+document.querySelectorAll("path").forEach(state => {
+  state.addEventListener("click", () => {
+    const id = state.id;
+
+    if (id === "KS") {
+      info.innerHTML = "<b>Kansas:</b> Active – Partner programs launching.";
+    }
+    else if (id === "MO") {
+      info.innerHTML = "<b>Missouri:</b> Active – Pilot implementation underway.";
+    }
+    else {
+      info.innerHTML = "<b>" + id + ":</b> Not active yet.";
+    }
+  });
+});
+</script>
+
+</body>
+</html>
